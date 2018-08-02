@@ -1,5 +1,5 @@
 """
-hexwriter_test.py
+hex2file_test.py
 Matthew Brooks, 2018
 
 Unit test for 'hex2file'.
