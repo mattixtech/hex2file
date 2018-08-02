@@ -1,2 +1,34 @@
 # hex2file
 A Python module for writing hex string content to a file.
+
+## What it does
+Writes ascii hex strings to a file directly as in binary hex format. The string
+can be multi-line or single-line and 0x-prefixed or not. Excess whitespace in
+the input is ignored.  
+
+The following input (multi-line string):  
+0xFF00FF00  
+0xAABBCCDD  
+0x12345678  
+98765432 3456789A  
+  
+Would result in the following file content:  
+FF00FF00AABBCCDD12345678987654323456789A
+
+## Compatability
+Python 2/3 compatible.
+
+# Install
+Get the module via pip: `pip install hex2file`
+
+# Usage
+## Command Line
+When ran as a command line utility hex2file accepts input via stdin and writes
+it to the given file.
+
+Example: `echo "0xFF00FF00" | hex2file.py /tmp/test`
+
+## Library
+The module can also be imported into a Python project. After installing it
+simply `import hex2file` and use `hex2file.write_str()` or
+`hex2file.write_from_file()`.

@@ -94,7 +94,7 @@ def parse_arguments():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--append",
-                        help="Append to the file rather than overwrite.",
+                        help="Append to the file rather than overwrite it.",
                         action="store_true")
     parser.add_argument("output_path",
                         help="The path to the output file to write hex to.")
@@ -105,7 +105,7 @@ def parse_arguments():
 def main():
     """
     When ran directly, accepts input via stdin and converts that to hex in a
-    file provided as arg1.
+    given file.
 
     :return: None
     """
