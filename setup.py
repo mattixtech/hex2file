@@ -9,6 +9,9 @@ setuptools.setup(
     packages=['hex2file'],
     test_suite='nose.collector',
     tests_require=['nose'],
+    entry_points={
+        'console_scripts': ['hex2file=hex2file:_cmd_line']
+    },
     url='https://github.com/mattixtech/hex2file',
     license='MIT',
     author='Matthew Brooks',
@@ -22,4 +25,5 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    keywords='hex'
 )

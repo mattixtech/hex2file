@@ -15,18 +15,20 @@ The following input (multi-line string):
 Would result in the following file content:  
 FF00FF00AABBCCDD12345678987654323456789A
 
-## Compatability
+## Compatibility
 Python 2/3 compatible.
 
 # Install
-Get the module via pip: `pip install hex2file`
+Get the module via pip: `pip install hex2file`. Once installed 'hex2file' will
+be added to your path and the module will be available for importing in your
+Python projects.
 
 # Usage
 ## Command Line
 When ran as a command line utility hex2file accepts input via stdin and writes
 it to the given file.
 
-Example: `echo "0xFF00FF00" | hex2file.py /tmp/test`
+Example: `echo "0xFF00FF00" | hex2file /tmp/test`
 
 ## Library
 The module can also be imported into a Python project. After installing it
@@ -34,4 +36,5 @@ simply `import hex2file` and use `hex2file.write_str()` or
 `hex2file.write_from_file()`.
 
 # Testing
-You can run the test script directly with Python `python hex2file_test.py`
+Run the tests using `python setup.py test` from the root directory of this
+repository.

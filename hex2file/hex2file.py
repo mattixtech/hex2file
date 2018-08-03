@@ -102,7 +102,7 @@ def _parse_arguments():
     return parser.parse_args()
 
 
-def main():
+def _cmd_line():
     """
     When ran directly, accepts input via stdin and converts that to hex in a
     given file.
@@ -127,4 +127,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    _cmd_line()
