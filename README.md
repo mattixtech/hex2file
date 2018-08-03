@@ -32,3 +32,6 @@ Example: `echo "0xFF00FF00" | hex2file.py /tmp/test`
 The module can also be imported into a Python project. After installing it
 simply `import hex2file` and use `hex2file.write_str()` or
 `hex2file.write_from_file()`.
+
+# Testing
+You can run the test script directly with Python `python hex2file_test.py`

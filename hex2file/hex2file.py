@@ -85,7 +85,7 @@ def write_from_file(text_file_path, file_path, append=False):
         write_str(input_file.read(), file_path, append)
 
 
-def parse_arguments():
+def _parse_arguments():
     """
     Parse the command line arguments.
 
@@ -113,7 +113,7 @@ def main():
     # Check if stdin has anything for us
     if not sys.stdin.isatty():
         stdin_input = sys.stdin.read()
-        parsed_args = parse_arguments()
+        parsed_args = _parse_arguments()
         append = False
 
         if parsed_args.append:

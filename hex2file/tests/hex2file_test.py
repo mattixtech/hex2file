@@ -4,6 +4,8 @@ Matthew Brooks, 2018
 
 Unit test for 'hex2file'.
 """
+from functools import wraps
+
 import binascii
 import os
 import tempfile
@@ -20,6 +22,7 @@ def _check_output_file(func):
     :return: the wrapped function
     """
 
+    @wraps(func)
     def _wrapper(self, *args, **kwargs):
         # Setup some temp files
         self.output_file = tempfile.NamedTemporaryFile(mode="w", delete=False)
