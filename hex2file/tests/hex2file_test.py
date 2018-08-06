@@ -68,6 +68,17 @@ class TestHex2File(unittest.TestCase):
 
         cls.append_repeat = 5
         cls.invalid_hex_str = "0x00FF00FZ"
+        cls.hex_str_to_filter = """
+            # Begin
+            0x00FF00FF,
+            0xFF00FF00,
+            // Middle
+            0xAABBCCDD,
+            0x00000000,
+            0x12345678,
+            #0xAABBCCDD,
+            /* End */
+            """
         cls.valid_hex_str = """
             0x00FF00FF
             0xFF00FF00
@@ -88,6 +99,8 @@ class TestHex2File(unittest.TestCase):
         """
         Tests hex2file.write_str.
 
+        The implementation tested here is deprecated.
+
         :return: None
         """
 
@@ -101,7 +114,9 @@ class TestHex2File(unittest.TestCase):
     @_check_output_file
     def test_write_from_file(self):
         """
-        Tests hex2file.write_from_file
+        Tests hex2file.write_from_file.
+
+        The implementation tested here is deprecated.
 
         :return: None
         """
@@ -119,7 +134,7 @@ class TestHex2File(unittest.TestCase):
 
         os.unlink(input_file.name)
 
-    def test_invalid(self):
+    def test_invalid_input(self):
         """
         Test the case where we try to write invalid hex.
 
@@ -128,11 +143,23 @@ class TestHex2File(unittest.TestCase):
 
         with tempfile.NamedTemporaryFile(mode="w", delete=False) as f:
             with self.assertRaises(ValueError):
-                hex2file.write_str(self.invalid_hex_str, f.name)
+                hex2file.write(self.invalid_hex_str, f.name)
 
         self.assertEqual(0, os.stat(f.name).st_size)
         f.close()
         os.unlink(f.name)
+
+    @_check_output_file
+    def test_filtering(self):
+        """
+        Tests write() with comment_strings and ignore_strings set.
+
+        :return: None
+        """
+
+        # Regular write
+        hex2file.write(self.hex_str_to_filter, self.output_file.name,
+                       comment_strings=("#", "/*", "//"), ignore_strings=(",",))
 
 
 if __name__ == '__main__':

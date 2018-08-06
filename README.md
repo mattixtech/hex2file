@@ -25,15 +25,14 @@ Python projects.
 
 # Usage
 ## Command Line
-When ran as a command line utility hex2file accepts input via stdin and writes
-it to the given file.
+When pip installed, hex2file is added to your path. It can accept input directly
+from stdin or from a file with the '-f' flag. See `hex2file --help`.
 
 Example: `echo "0xFF00FF00" | hex2file /tmp/test`
 
 ## Library
 The module can also be imported into a Python project. After installing it
-simply `import hex2file` and use `hex2file.write_str()` or
-`hex2file.write_from_file()`.
+simply `import hex2file` and use `hex2file.write()`.
 
 # Testing
 Run the tests using `python setup.py test` from the root directory of this
