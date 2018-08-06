@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='hex2file',
-    version='1.1.0',
+    version='1.1.1',
     packages=['hex2file'],
     install_requires=['deprecation==2.0.5'],
     test_suite='nose.collector',

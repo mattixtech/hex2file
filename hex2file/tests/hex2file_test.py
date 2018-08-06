@@ -109,7 +109,8 @@ class TestHex2File(unittest.TestCase):
 
         # Append
         for _ in range(self.append_repeat):
-            hex2file.write_str(self.valid_hex_str, self.append_file.name, True)
+            hex2file.write_str(self.valid_hex_str, self.append_file.name,
+                               append=True)
 
     @_check_output_file
     def test_write_from_file(self):
@@ -130,7 +131,7 @@ class TestHex2File(unittest.TestCase):
         # Append
         for _ in range(self.append_repeat):
             hex2file.write_from_file(input_file.name, self.append_file.name,
-                                     True)
+                                     append=True)
 
         os.unlink(input_file.name)
 
@@ -160,6 +161,11 @@ class TestHex2File(unittest.TestCase):
         # Regular write
         hex2file.write(self.hex_str_to_filter, self.output_file.name,
                        comment_strings=("#", "/*", "//"), ignore_strings=(",",))
+        # Append
+        for _ in range(self.append_repeat):
+            hex2file.write(self.hex_str_to_filter, self.append_file.name,
+                           append=True, comment_strings=("#", "/*", "//"),
+                           ignore_strings=(",",))
 
 
 if __name__ == '__main__':
